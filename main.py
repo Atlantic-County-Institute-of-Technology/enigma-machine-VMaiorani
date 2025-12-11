@@ -3,7 +3,7 @@ def Make_Key(msg,KEY):
         return KEY
     else:
         for i in range(len(msg) - len(KEY)):
-            KEY.append(KEY[i % len(KEY)])
+            KEY = KEY + KEY[i % len(KEY)]
         return"".join(KEY)
 
 def Vigenere_Cipher(msg, KEY):
