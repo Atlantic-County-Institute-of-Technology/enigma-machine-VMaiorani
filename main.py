@@ -4,6 +4,7 @@ def Make_Key(msg,KEY):
     else:
         for i in range(len(msg) - len(KEY)):
             KEY = KEY + KEY[i % len(KEY)]
+            print(KEY)
         return"".join(KEY)
 
 def Vigenere_Cipher(msg, KEY):
@@ -13,8 +14,11 @@ def Vigenere_Cipher(msg, KEY):
         char = msg[i]
         if char.isupper():
             encrypted_char = chr((ord(char) + ord(KEY[i]) - 2 * ord('A')) % 26 + ord('A'))
+            print(encrypted_char)
         elif char.islower():
             encrypted_char = chr((ord(char) + ord(KEY[i]) - 2 * ord('A')) % 26 + ord('a'))
+            print(encrypted_char)
+        #     awedh
         else:
             encrypted_char = char
         encrypt.append(encrypted_char)
