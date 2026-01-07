@@ -7,7 +7,6 @@ def Make_Key(msg,KEY):
         for i in range(len(msg) - len(KEY)):
             KEY = KEY[i % len(KEY)]
             i += 1
-            print(KEY)
         return"".join(KEY)
 
 def Vigenere_Cipher(msg,KEY):
@@ -16,7 +15,6 @@ def Vigenere_Cipher(msg,KEY):
     m = 0
     for i in range(len(msg)):
         char = msg[i]
-        print(char, KEY[m % len(KEY)])
         if char.isalpha():
             if char.isupper():
                 encode = (((ord(char) - ord('A')) + (ord(KEY[m % len(KEY)].upper()) - ord('A'))) % 26)
@@ -33,6 +31,18 @@ def Vigenere_Cipher(msg,KEY):
             encode_text = char
             encrypt.append(encode_text)
     return "".join(encrypt)
+
+def write_file():
+    file = input("please type a name for the file: ")
+
+    try
+        with open(filename, 'w') as file:
+                file.write(message)
+            print(f"\n[✓] Message successfully written to '{filename}'.\n")
+
+        except Exception as e:
+            # if there is any issue, error out
+            print(f"\n[!] Error writing to file: {e}\n")
 
 # def Dedcode_Cipher(Excepted_Text, KEY):
 #     Make_Key(msg, KEY)
@@ -74,8 +84,10 @@ def main():
     while True:
         print("---------------Menu-------------------\n"
               "1. Make a cipher \n"
-              "2. overwrite current file \n"
-              "3. decode file content\n"
+              "2. create a file \n"
+              "3. write a file \n"
+              "4. read a file \n"
+              "5. decode file content\n"
               "--------------------------------------")
         menu = int(input("What options would you like to choose: "))
 
@@ -86,7 +98,7 @@ def main():
             Vigenere_Cipher(msg, KEY)
             print("the encryted vesion of " + str(msg) + " is " + Excepted_Text)
         elif menu == 2:
-            print("In working progress")
+            write_file()
         elif menu == 3:
             print("In working progress")
         else:
